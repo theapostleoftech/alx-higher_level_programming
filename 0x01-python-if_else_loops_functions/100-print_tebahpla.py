@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-print("".join([chr(i)
-               if i % 2 == 0
-               else chr(i).lower()
-               for i in range(ord('Z'), ord('A') - 1, -1)]))
+for char in range(ord('z'), ord('A') - 1, -1):
+    print("{:c}".format(char) if (char - ord('A')) % 2 == 0 else "{:c}".format(char + 32), end="")
+
+print("")
