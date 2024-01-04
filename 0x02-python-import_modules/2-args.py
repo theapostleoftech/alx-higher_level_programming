@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    argv_len = len(sys.argv) - 1  # Exclude the script name from the count
+    argv_len = len(argv) - 1
 
     if argv_len == 0:
         print("0 arguments.")
@@ -11,5 +11,5 @@ if __name__ == "__main__":
     else:
         print(f"{argv_len} arguments:")
 
-    for i, arg in enumerate(sys.argv[1:], start=1):
+    for i, arg in enumerate(argv[1:], start=1):
         print(f"{i}: {arg}")
