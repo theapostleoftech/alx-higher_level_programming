@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    argc = len(argv) - 1
-    plural_s = 's' if argc != 1 else ''
+    argv_len = len(sys.argv) - 1  # Exclude the script name from the count
 
-    print("{} argument{}".format(argc, plural_s) + ("." if argc == 0 else ":"))
+    if argv_len == 0:
+        print("0 arguments.")
+    elif argv_len == 1:
+        print("1 argument:")
+    else:
+        print(f"{argv_len} arguments:")
 
-    for i in range(1, argc + 1):
-        print("{}: {}".format(i, argv[i]))
+    for i, arg in enumerate(sys.argv[1:], start=1):
+        print(f"{i}: {arg}")
