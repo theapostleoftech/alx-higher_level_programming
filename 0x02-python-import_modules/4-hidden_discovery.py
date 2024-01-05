@@ -1,6 +1,5 @@
 #!/usr/bin/python3.8
 import importlib.util
-import sys
 
 
 def print_hidden_names(module_path):
@@ -13,11 +12,11 @@ def print_hidden_names(module_path):
     for name in sorted(names):
         print(name)
 
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: {} <module_path>".format(sys.argv[0]))
-        sys.exit(1)
-
-    module_path = sys.argv[1]
-    print_hidden_names(module_path)
+#
+# if __name__ == "__main__":
+#     if len(sys.argv) != 2:
+#         print("Usage: {} <module_path>".format(sys.argv[0]))
+#         sys.exit(1)
+#
+#     module_path = sys.argv[1]
+#     print_hidden_names(module_path)
