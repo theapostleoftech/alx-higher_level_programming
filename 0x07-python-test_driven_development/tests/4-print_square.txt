@@ -56,7 +56,7 @@ The parameter ``size`` must be an integer. Otherwise, a TypeError is raised.
 
 ::
 
-    >>> print_square(5.5)
+    >>> print_square(4.4)
     Traceback (most recent call last):
     TypeError: size must be an integer
 
@@ -70,7 +70,7 @@ If ``size`` is less than zero, a ValueError is raised.
 
 ::
 
-    >>> print_square(-7)
+    >>> print_square(-9)
     Traceback (most recent call last):
     ValueError: size must be >= 0
 
@@ -78,7 +78,7 @@ Note that type-checking occurs before value-checking.
 
 ::
 
-    >>> print_square(-7.5)
+    >>> print_square(-8.0)
     Traceback (most recent call last):
     TypeError: size must be an integer
 
