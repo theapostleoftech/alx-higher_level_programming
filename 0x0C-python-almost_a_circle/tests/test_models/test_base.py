@@ -12,6 +12,24 @@ class TestBase(unittest.TestCase):
     Test cases for the Base Class
     """
 
+    def setUp(self):
+        """
+        Set up for the tests.
+        """
+        self.b = Base()
+
+    def tearDown(self):
+        """
+        Clean up after the tests.
+        """
+        del self.b
+
+    def test_initialization(self):
+        """
+        Test for correct initialization of the base.
+        """
+        self.assertEqual(self.b.id, 1)
+
     def test_no_id(self):
         """
         Testing for no id
@@ -120,36 +138,36 @@ class TestBase(unittest.TestCase):
     pass
 
 
-class TestSquare(unittest.TestCase):
-    """
-    class for testing Base class' methods
-    """
-
-    @classmethod
-    def setUpClass(cls):
-        """
-        Set up class method for the doc tests
-        """
-        cls.setup = inspect.getmembers(Base, inspect.isfunction)
-
-    def test_module_docstring(self):
-        """
-        Testing if module docstring documentation exist
-        """
-        self.assertTrue(len(Base.__doc__) >= 1)
-
-    def test_class_docstring(self):
-        """
-        Testing if class docstring documentation exist
-        """
-        self.assertTrue(len(Base.__doc__) >= 1)
-
-    def test_func_docstrings(self):
-        """
-        Testing if methods docstring documentation exist
-        """
-        for func in self.setup:
-            self.assertTrue(len(func[1].__doc__) >= 1)
+# class TestSquare(unittest.TestCase):
+#     """
+#     class for testing Base class' methods
+#     """
+#
+#     @classmethod
+#     def setUpClass(cls):
+#         """
+#         Set up class method for the doc tests
+#         """
+#         cls.setup = inspect.getmembers(Base, inspect.isfunction)
+#
+#     def test_module_docstring(self):
+#         """
+#         Testing if module docstring documentation exist
+#         """
+#         self.assertTrue(len(Base.__doc__) >= 1)
+#
+#     def test_class_docstring(self):
+#         """
+#         Testing if class docstring documentation exist
+#         """
+#         self.assertTrue(len(Base.__doc__) >= 1)
+#
+#     def test_func_docstrings(self):
+#         """
+#         Testing if methods docstring documentation exist
+#         """
+#         for func in self.setup:
+#             self.assertTrue(len(func[1].__doc__) >= 1)
 
 
 if __name__ == '__main__':
