@@ -32,7 +32,8 @@ class TestSquare(unittest.TestCase):
         """
         Test the __str__ method.
         """
-        self.assertEqual(str(self.s), "[Square] ({}) 0/0 - 5".format(self.s.id))
+        self.assertEqual(str(self.s),
+                         "[Square] ({}) 0/0 - 5".format(self.s.id))
 
     def test_update(self):
         """
