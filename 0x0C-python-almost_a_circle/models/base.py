@@ -24,8 +24,8 @@ class Base:
         """Returns the JSON representation of list_dictionaries"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if (type(list_dictionaries) != list or not
-        all(type(i) == dict for i in list_dictionaries)):
+        if (type(list_dictionaries) != list
+                or not all(type(i) == dict for i in list_dictionaries)):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return js.dumps(list_dictionaries)
 
@@ -107,7 +107,8 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = cs.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([key, int(value)] for key, value in d.items()) for d in list_dicts]
+                list_dicts = [dict([key, int(value)] for key, value in d.items())
+                              for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
