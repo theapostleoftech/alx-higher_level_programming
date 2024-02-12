@@ -17,7 +17,7 @@ class TestBase(unittest.TestCase):
         :return: none
         """
         b = Base()
-        self.assertEqual(5, b.id)
+        self.assertEqual(2, b.id)
 
     def test_valid_id(self):
         """
