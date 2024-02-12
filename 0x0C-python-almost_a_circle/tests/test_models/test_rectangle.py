@@ -1137,7 +1137,7 @@ class TestRectangleStdout(unittest.TestCase):
     # Test __str__ method
     def test_str_method_print_width_height(self):
         r = Rectangle(4, 6)
-        capture = TestRectangle_stdout.capture_stdout(r, "print")
+        capture = TestRectangleStdout.capture_stdout(r, "print")
         correct = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
         self.assertEqual(correct, capture.getvalue())
 
