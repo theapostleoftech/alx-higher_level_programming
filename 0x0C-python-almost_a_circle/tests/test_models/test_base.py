@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import inspect
 import json as js
 import unittest
+from unittest.mock import patch, Mock
 
 from models.base import Base
 from models.square import Square
@@ -138,36 +138,26 @@ class TestBase(unittest.TestCase):
     pass
 
 
-# class TestSquare(unittest.TestCase):
-#     """
-#     class for testing Base class' methods
-#     """
-#
-#     @classmethod
-#     def setUpClass(cls):
-#         """
-#         Set up class method for the doc tests
-#         """
-#         cls.setup = inspect.getmembers(Base, inspect.isfunction)
-#
-#     def test_module_docstring(self):
-#         """
-#         Testing if module docstring documentation exist
-#         """
-#         self.assertTrue(len(Base.__doc__) >= 1)
-#
-#     def test_class_docstring(self):
-#         """
-#         Testing if class docstring documentation exist
-#         """
-#         self.assertTrue(len(Base.__doc__) >= 1)
-#
-#     def test_func_docstrings(self):
-#         """
-#         Testing if methods docstring documentation exist
-#         """
-#         for func in self.setup:
-#             self.assertTrue(len(func[1].__doc__) >= 1)
+class TestDraw(unittest.TestCase):
+    """
+    Test cases for the draw function
+    """
+    @patch('turtle.Turtle')
+    @patch('turtle.Screen')
+    def test_draw(self, mock_screen, mock_turtle):
+        # Create mock objects for a rectangle and a square
+        mock_rectangle = Mock(x=0, y=0, width=10, height=20)
+        mock_square = Mock(x=10, y=10, width=20, height=20)
+
+        # Call the function with the mock objects
+        Base.draw([mock_rectangle], [mock_square])
+
+        # Assert that the turtle methods were called with the correct arguments
+        calls = [((0, 0),), ((10, 0),), ((10, 20),), ((0, 20),), ((0, 0),), ((10, 10),), ((30, 10),), ((30, 30),),
+                 ((10, 30),), ((10, 10),)]
+        mock_turtle.return_value.goto.assert_has_calls(calls)
+        calls = [((10,),), ((20,),), ((10,),), ((20,),), ((20,),), ((20,),), ((20,),), ((20,),)]
+        mock_turtle.return_value.forward.assert_has_calls(calls)
 
 
 if __name__ == '__main__':
