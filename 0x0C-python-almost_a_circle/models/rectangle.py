@@ -87,8 +87,6 @@ class Rectangle(Base):
             for column in range(self.__width):
                 print("#", end="")
             print()
-        # for y in range(self.__height):
-        #     print("#" * self.__width)
 
     def __str__(self):
         """Returns the string representation of the rectangle"""
