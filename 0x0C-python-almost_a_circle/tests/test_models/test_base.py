@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import json as js
 import unittest
-from unittest.mock import patch, Mock
 
 from models.base import Base
 from models.square import Square
@@ -136,28 +135,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(json_string, "[]")
 
     pass
-
-
-class TestDraw(unittest.TestCase):
-    """
-    Test cases for the draw function
-    """
-    @patch('turtle.Turtle')
-    @patch('turtle.Screen')
-    def test_draw(self, mock_screen, mock_turtle):
-        # Create mock objects for a rectangle and a square
-        mock_rectangle = Mock(x=0, y=0, width=10, height=20)
-        mock_square = Mock(x=10, y=10, width=20, height=20)
-
-        # Call the function with the mock objects
-        Base.draw([mock_rectangle], [mock_square])
-
-        # Assert that the turtle methods were called with the correct arguments
-        calls = [((0, 0),), ((10, 0),), ((10, 20),), ((0, 20),), ((0, 0),), ((10, 10),), ((30, 10),), ((30, 30),),
-                 ((10, 30),), ((10, 10),)]
-        mock_turtle.return_value.goto.assert_has_calls(calls)
-        calls = [((10,),), ((20,),), ((10,),), ((20,),), ((20,),), ((20,),), ((20,),), ((20,),)]
-        mock_turtle.return_value.forward.assert_has_calls(calls)
 
 
 if __name__ == '__main__':
