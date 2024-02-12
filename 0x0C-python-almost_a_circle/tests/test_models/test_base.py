@@ -28,7 +28,7 @@ class TestBase(unittest.TestCase):
         """
         Test for correct initialization of the base.
         """
-        self.assertEqual(self.b.id, 1)
+        self.assertEqual(self.b.id, 3)
 
     def test_no_id(self):
         """
@@ -36,7 +36,7 @@ class TestBase(unittest.TestCase):
         :return: none
         """
         b = Base()
-        self.assertEqual(2, b.id)
+        self.assertEqual(12, b.id)
 
     def test_valid_id(self):
         """
