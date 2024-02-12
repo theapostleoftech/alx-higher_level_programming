@@ -160,4 +160,3 @@ class Base:
             tortoise.hideturtle()
 
         turtle.done()
-
