@@ -102,26 +102,56 @@ class Rectangle(Base):
                 if ar == 0:
                     self.id = arg
                 elif ar == 1:
-                    self.__width = arg
+                    self.width = arg
                 elif ar == 2:
-                    self.__height = arg
+                    self.height = arg
                 elif ar == 3:
-                    self.__x = arg
+                    self.x = arg
                 elif ar == 4:
-                    self.__y = arg
+                    self.y = arg
                 ar += 1
         else:
             for key, value in kwargs.items():
                 if key == "id":
                     self.id = value
                 elif key == "width":
-                    self.__width = value
+                    self.width = value
                 elif key == "height":
-                    self.__height = value
+                    self.height = value
                 elif key == "x":
-                    self.__x = value
+                    self.x = value
                 elif key == "y":
-                    self.__y = value
+                    self.y = value
+
+    # def update(self, *args, **kwargs):
+    #     """Assigns key/value arguments to attributes"""
+    #
+    #     if args and len(args) != 0:
+    #         ar = 0
+    #         for arg in args:
+    #             if ar == 0:
+    #                 self.id = arg
+    #             elif ar == 1:
+    #                 self.__width = arg
+    #             elif ar == 2:
+    #                 self.__height = arg
+    #             elif ar == 3:
+    #                 self.__x = arg
+    #             elif ar == 4:
+    #                 self.__y = arg
+    #             ar += 1
+    #     else:
+    #         for key, value in kwargs.items():
+    #             if key == "id":
+    #                 self.id = value
+    #             elif key == "width":
+    #                 self.__width = value
+    #             elif key == "height":
+    #                 self.__height = value
+    #             elif key == "x":
+    #                 self.__x = value
+    #             elif key == "y":
+    #                 self.__y = value
 
     def to_dictionary(self):
         """Returns the dictionary representation of the rectangle"""
