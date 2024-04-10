@@ -1,6 +1,7 @@
 #!/usr/bin/node
 let result;
-add = function (a, b) {
+const add = function (a, b) {
   result = a + b;
   return result;
 };
+add();
