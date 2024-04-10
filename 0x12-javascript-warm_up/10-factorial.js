@@ -1,6 +1,5 @@
 #!/usr/bin/node
 const n = parseInt(process.argv[2]);
-let result;
 function factorial (n) {
   if (!+n) {
     return 1;
@@ -10,5 +9,5 @@ function factorial (n) {
     return n * factorial(n - 1);
   }
 }
-result = factorial(n);
+const result = factorial(n);
 console.log(result);
