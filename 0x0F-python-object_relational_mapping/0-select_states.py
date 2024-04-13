@@ -10,15 +10,12 @@ if __name__ == '__main__':
     username = sys.arv[1]
     password = sys.argv[2]
     name = sys.argv[3]
-    
-    db = mysqldb.connect(
-    host="localhost",
-    port=3306,
-    user=username,
-    passwd=password,
-    db=name
-    )
-    
+
+    db = mysqldb.connect(host="localhost",
+                         port=3306,
+                         user=username,
+                         passwd=password,
+                         db=name)
     cur = db.cursor()
     cur.execute("SELECT * FROM states ORDER BY id ASC")
     query_rows = cur.fetchall()
