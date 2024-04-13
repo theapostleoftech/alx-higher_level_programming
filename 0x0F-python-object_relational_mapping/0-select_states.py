@@ -7,7 +7,7 @@ import sys
 
 if __name__ == '__main__':
 
-    username = sys.arv[1]
+    username = sys.argv[1]
     password = sys.argv[2]
     name = sys.argv[3]
 
