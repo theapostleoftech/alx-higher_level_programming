@@ -6,18 +6,17 @@ const request = require('request');
 const movieId = process.argv[2];
 
 if (movieId) {
-    const api = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
+  const api = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-    request(api, (error, response, body) => {
-        if (error) {
-            console.error('Error:', error);
-        } else {
-            const movie = JSON.parse(body);
+  request(api, (error, response, body) => {
+    if (error) {
+      console.error('Error:', error);
+    } else {
+      const movie = JSON.parse(body);
 
-            console.log(movie.title);
-        }
-    });
-
+      console.log(movie.title);
+    }
+  });
 } else {
-    console.error('Please provide a movie ID as an argument.');
+  console.error('Please provide a movie ID as an argument.');
 }
