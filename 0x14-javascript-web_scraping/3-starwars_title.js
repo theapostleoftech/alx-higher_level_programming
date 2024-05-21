@@ -3,7 +3,7 @@
 // a Star Wars Movie episode
 const request = require('request');
 
-const movieId = process.argv[1];
+const movieId = process.argv[2];
 
 if (movieId) {
     const api = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
