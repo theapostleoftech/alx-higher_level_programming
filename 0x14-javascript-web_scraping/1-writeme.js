@@ -1,19 +1,20 @@
 #!/usr/bin/node
-// A script that displays
-// the status code of a GET request
+// A script that writes to a file
 
-const request = require('request');
+const fs = require('fs');
 
-const url = process.argv[2];
+const filePath = process.argv[2];
+const stringToWrite = process.argv[3]
 
-if (url) {
-    request(url, (error, response) => {
-        if (error) {
-            console.error('Error:', error);
+if (filePath && stringToWrite) {
+
+    fs.writeFile(filePath, stringToWrite, 'utf-8', (err) => {
+        if (err) {
+            console.error('Error:', err);
         } else {
-            console.log(`code: ${response.statusCode}`);
+            console.log('File written successfully');
         }
     });
 } else {
-    console.error('Please provide a url as an argument.');
+    console.error('Please provide both the file path and the string to write as argument');
 }
