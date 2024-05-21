@@ -14,7 +14,7 @@ const readFile = (path) => {
     });
 };
 
-if (fileppath) {
+if (filePath) {
     readFile(filePath);
 } else {
     console.error('Please provide a file path as an argument.');
