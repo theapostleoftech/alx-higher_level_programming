@@ -2,44 +2,21 @@
 // A script that prints the number of movies
 // where the character Wedge Antilles is present.
 const request = require('request');
+const url = process.argv[2];
 
-function fetchData (url) {
-  return new Promise((resolve, reject) => {
-    request(url, (error, response, body) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(JSON.parse(body));
-      }
-    });
-  });
-}
-
-function getCharacterIdFromUrl (url) {
-  const match = url.match(/\/(\d+)\/$/);
-  return match ? match[1] : null;
-}
-
-async function countMoviesWithWedgeAntilles (apiUrl) {
-  try {
-    const data = await fetchData(apiUrl);
-    const wedgeAntillesId = '18';
+request(url, function (error, response, body) {
+  if (error) {
+    console.log('code:', response.statusCode);
+  } else {
+    const jsonBody = JSON.parse(body);
     let count = 0;
-
-    for (const movie of data.results) {
-      const characters = await Promise.all(movie.characters.map(fetchData));
-      const hasWedgeAntilles = characters.some((character) => getCharacterIdFromUrl(character.url) === wedgeAntillesId);
-      if (hasWedgeAntilles) {
-        count++;
+    for (const film of jsonBody.results) {
+      for (const character of film.characters) {
+        if (character.endsWith('/18/')) {
+          count += 1;
+        }
       }
     }
-
     console.log(count);
-  } catch (error) {
-    console.error('Error:', error);
   }
-}
-
-const apiUrl = process.argv[2];
-
-countMoviesWithWedgeAntilles(apiUrl);
+});
