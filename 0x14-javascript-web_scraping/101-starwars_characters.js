@@ -13,7 +13,6 @@ request(apiUrl, (error, response, body) => {
     const movie = JSON.parse(body);
     const charactersUrls = movie.characters;
 
-    // Fetch all character data from the API
     const fetchCharacters = charactersUrls.map(url => new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (error) {
@@ -26,7 +25,6 @@ request(apiUrl, (error, response, body) => {
 
     Promise.all(fetchCharacters)
       .then(characters => {
-        // Print each character's name in the same order as the characters array
         charactersUrls.forEach(url => {
           const character = characters.find(char => char.url === url);
           console.log(character.name);
