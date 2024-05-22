@@ -25,9 +25,9 @@ request(apiUrl, (error, response, body) => {
 
     const userIdsWithCompletedTasks = Object.keys(completedTasksByUser);
     if (userIdsWithCompletedTasks.length === 0) {
-      console.log('No users with completed tasks.');
-    } else {
       console.log(completedTasksByUser);
-    }
+    } //else {
+      //console.log(completedTasksByUser);
+    //}
   }
 });
